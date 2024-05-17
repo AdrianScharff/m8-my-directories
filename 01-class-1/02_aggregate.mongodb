@@ -1,0 +1,44 @@
+use('sample_mflix')
+
+// Aggreation Framework: Example - Count how many movies are for each rating existence
+
+db.movies.aggregate([
+    {
+        $group: {
+            _id: "$rated",
+            count: { $sum: 1 }
+        }
+    }
+])
+
+db.movies.aggregate([
+    // Stage 1: Group and sum by rating
+    {
+        $group: {
+            _id: "$rated",
+            count: { $sum: 1 }
+        }
+    },
+    // Stage 2: Order from greater to smaller
+    {
+        $sort: { count: -1 }
+    }
+])
+
+// Filter by rated PG-13. then ungroup the directors array and add the comments of each movie
+db.movies.aggregate([
+    {
+        $match: { rated: "PG-13" }
+    },
+    {
+        $unwind: "$directors"
+    },
+    {
+        $lookup: {
+            from: "comments",
+            localField: "_id",
+            foreignField: "movie_id",
+            as: "comments"
+        }
+    }
+])

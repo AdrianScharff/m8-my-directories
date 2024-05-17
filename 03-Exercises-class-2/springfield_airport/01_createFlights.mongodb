@@ -1,0 +1,68 @@
+use('springfield_airport')
+
+// db.flights.insertOne({
+//     departure_time: "9:00",
+//     airline: "Emirates",
+//     plane_code: 7865439214,
+//     flight_number: 12312,
+//     destination: "Toronto Canada",
+//     boarding_gate: 1,
+//     flight_status: "ON TIME"
+// })
+
+db.flights.insertMany([
+    {
+        departure_time: "6:00",
+        airline: "American Airlines Group",
+        plane_code: 8239427452,
+        flight_number: 98254,
+        destination: "Tokyo Japan",
+        boarding_gate: 2,
+        flight_status: "ON TIME"
+    },
+    {
+        departure_time: "5:00",
+        airline: "Ryanair",
+        plane_code: 7321547892,
+        flight_number: 23467,
+        destination: "Madrid Spain",
+        boarding_gate: 1,
+        flight_status: "TAKEOFFING"
+    },
+    {
+        departure_time: "15:00",
+        airline: "Delta Air Lines Group",
+        plane_code: 9384572635,
+        flight_number: 98714,
+        destination: "London England",
+        boarding_gate: 3,
+        flight_status: "DELAY"
+    },
+    {
+        departure_time: "21:00",
+        airline: "Southwest Airlines",
+        plane_code: 7562154790,
+        flight_number: 67653,
+        destination: "Beijing China",
+        boarding_gate: 1,
+        flight_status: "ON TIME"
+    },
+    {
+        departure_time: "7:00",
+        airline: "Frontier Airlines",
+        plane_code: 9856372635,
+        flight_number: 65389,
+        destination: "Munich Germany",
+        boarding_gate: 4,
+        flight_status: "CANCELLED"
+    },
+    {
+        departure_time: "11:00",
+        airline: "JetBlue",
+        plane_code: 7463526378,
+        flight_number: 17365,
+        destination: "Milan Italy",
+        boarding_gate: 2,
+        flight_status: "TAKEOFFING"
+    },
+])

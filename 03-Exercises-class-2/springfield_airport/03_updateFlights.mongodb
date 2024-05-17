@@ -1,0 +1,3 @@
+use('springfield_airport')
+
+db.flights.find()

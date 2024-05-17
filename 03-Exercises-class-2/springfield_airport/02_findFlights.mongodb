@@ -1,0 +1,54 @@
+use('springfield_airport')
+
+db.flights.findOne({ destination: "Munich Germany" })
+
+db.flights.findOne({ _id: ObjectId('6646ca6f26fbf0f5a31fd976') })
+
+db.flights.find()
+
+db.flights.find().limit(4)
+
+db.flights.find().count()
+
+db.flights.find({}, { airline: 1 }).sort({ airline: -1 })
+
+db.flights.find({}, { airline: 1, departure_time: 1, _id: 0 }).sort({ airline: -1 })
+
+db.flights.find({ flight_status: "ON TIME" }).count()
+
+db.flights.find({ flight_status: { $in: ["CANCELLED", "TAKEOFFING"] } }).count()
+
+db.flights.find({ boarding_gate: { $gt: 3 } })
+
+db.flights.find({ flight_status: { $ne: "TAKEOFFING" } }, { departure_time: 1, flight_number: 1, airline: 1, _id: 0 }).sort({ departure_time: -1 }).limit(2)
+
+// Aggregate
+
+db.flights.aggregate([
+    {
+        $group: {
+            _id: "$flight_status",
+            count: { $sum: 1 }
+        }
+    }
+])
+
+db.flights.aggregate([
+    {
+        $group: {
+            _id: "$flight_status",
+            count: { $sum: 1 }
+        }
+    },
+    {
+        $sort: {
+            count: -1
+        }
+    }
+])
+
+db.flights.aggregate([
+    {
+        $match: { flight_status: "ON TIME" }
+    }
+])

@@ -1,0 +1,27 @@
+/* Update documents in MongoDB */
+
+use('sample_mflix')
+
+/* Update one single document --> updateOne() --> Update one single document the fills the specified filter (the condition)*/
+
+// db.movies.updateOne({ title: "The DevF Show" }, {
+//     $set:
+//         { director: "Hideo Kojima" }
+// })
+
+db.movies.find({ title: "The DevF Show" })
+
+/* Update SEVERAL documents */
+/* updateMany() --> Update all the documents that fill the specified filter (the condition) */
+
+/* Update the movies that contain the title "The DevF Show" and update the runtime to 120 and the rated to "PG-13" */
+// db.movies.updateMany({ title: /DevF/ }, { $set: { runtime: 120, rated: "PG-13" } })
+
+db.movies.find({ title: /DevF Show/ })
+
+/* $push is an updating operator that adds a value to a field of type array in a document. If the field doesn't exist, $push wil create it. */
+
+/* Add an actor 'Alberto Portugal' to the movie 'The DevF Show' */
+// db.movies.updateMany({ title: /DevF/ }, { $push: { actors: 'Alberto Portugal' } })
+
+db.movies.find({ title: /DevF/ })

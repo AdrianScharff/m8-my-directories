@@ -1,0 +1,17 @@
+/* Delete documents in MongoDB --> deleteOne() */
+
+use('sample_mflix')
+
+/* Delete one single document -- */
+// deleteOne({condition}) --> Delete the first document that fills the condition
+
+// Delete the movie with the title "The DevF Show"
+// db.movies.deleteOne({ title: "The DevF Show" })
+
+db.movies.find({ title: "The DevF Show" })
+
+// db.movies.deleteOne({ _id: ObjectId('6646b097829c5ddc9e41a055') })
+
+// db.movies.deleteMany({ title: /DevF/ })
+
+db.movies.find({ title: /DevF/ })

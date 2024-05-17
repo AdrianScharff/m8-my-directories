@@ -1,0 +1,23 @@
+use('sample_mflix')
+
+db.movies.findOne({ title: "The Godfather" })
+
+db.movies.findOne({ _id: ObjectId("573a1390f29313caabcd5293") })
+
+db.movies.find()
+
+db.movies.find().limit(3)
+
+db.movies.find({}).count()
+
+db.movies.find({}, { title: 1 }).sort({ title: -1 }).limit(5)
+
+db.movies.find({}, { title: 1, year: 1, _id: 0 }).sort({ title: -1 }).limit(5)
+
+db.movies.find({ rated: "PG" }).count()
+
+db.movies.find({ rated: { $in: ['PG', 'PG-13'] } }).count()
+
+db.movies.find({ 'imdb.rating': { $gt: 9 } })
+
+db.movies.find({ 'imdb.rating': {$ne: ''}}, { title: 1, 'imdb.rating': 1, _id: 0}).sort({'imdb.rating': -1}).limit(10)
