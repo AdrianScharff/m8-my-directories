@@ -1,0 +1,9 @@
+use('springfield_airport')
+
+db.flights.find()
+
+// db.flights.deleteOne({destination: "London England"})
+
+// db.flights.deleteOne({ _id: ObjectId("6646cde525ffee5c89f073a4")})
+
+db.flights.deleteMany({airline: "Qatar Airways"})
