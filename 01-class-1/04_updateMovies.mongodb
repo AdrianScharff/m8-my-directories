@@ -2,7 +2,7 @@
 
 use('sample_mflix')
 
-/* Update one single document --> updateOne() --> Update one single document the fills the specified filter (the condition)*/
+/* Update one single document --> updateOne() --> Update one single document that fills the specified filter (the condition)*/
 
 // db.movies.updateOne({ title: "The DevF Show" }, {
 //     $set:

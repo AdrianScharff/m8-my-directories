@@ -1,3 +1,24 @@
 use('springfield_airport')
 
+// db.flights.updateOne({ flight_number: 12312 }, {
+//     $set: { destination: "Paris France" }
+// })
+
 db.flights.find()
+
+// db.flights.updateMany({ boarding_gate: 1 },
+//     {
+//         $set: {
+//             airline: "Qatar Airways",
+//             flight_status: "DELAY"
+//         }
+//     }
+// )
+
+db.flights.updateMany({flight_status: "DELAY"},
+    {
+        $push: {
+            pilots: "Henry Ford"
+        }
+    }
+)
