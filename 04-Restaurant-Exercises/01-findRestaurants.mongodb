@@ -1,0 +1,183 @@
+use('restaurants_sample')
+
+db.restaurants.find()
+
+db.restaurants.find().limit(5)
+
+db.restaurants.find().skip(5).limit(5)
+
+db.restaurants.find({}, { $gt: 90 })
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    { $match: { "grades.score": { $gt: 90 } } },
+    {
+        $group: {
+            _id: "$_id",
+            name: { $first: "$name" },
+            borough: { $first: "$borough" },
+            cuisine: { $first: "$cuisine" },
+            restaurant_id: { $first: "$restaurant_id" },
+            grades: { $first: "$grades" }
+        }
+    }
+])
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    { $match: { "grades.score": { $gt: 80, $lt: 100 } } },
+    {
+        $group: {
+            _id: "$_id",
+            name: { $first: "$name" },
+            borough: { $first: "$borough" },
+            cuisine: { $first: "$cuisine" },
+            restaurant_id: { $first: "$restaurant_id" },
+            grades: { $first: "$grades" },
+        }
+    }
+])
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    { $match: { "grades.score": { $gt: 70 }, "cuisine": { $regex: /^American\s*$/ } } },
+    {
+        $group: {
+            _id: "$_id",
+            cuisine: { $first: "$cuisine" },
+            name: { $first: "$name" },
+            borough: { $first: "$borough" },
+            restaurant_id: { $first: "$restaurant_id" },
+            grades: { $first: "$grades" },
+        }
+    }
+])
+
+db.restaurants.find({}, { _id: 0 }).limit(1)
+
+db.restaurants.find({}, { name: 1, _id: 0 })
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    { $match: { "grades.grade": "A", "cuisine": { $regex: /^American\s*$/ }, "borough": { $ne: "Brooklyn" } } },
+    {
+        $group: {
+            _id: "$_id",
+            cuisine: { $first: "$cuisine" },
+            name: { $first: "$name" },
+            borough: { $first: "$borough" },
+            restaurant_id: { $first: "$restaurant_id" },
+            grades: { $push: "$grades" }
+        }
+    },
+    {
+        $lookup: {
+            from: "restaurants",
+            localField: "_id",
+            foreignField: "_id",
+            as: "full_details"
+        }
+    },
+    { $unwind: "$full_details" },
+    {
+        $project: {
+            _id: 1,
+            cuisine: 1,
+            name: 1,
+            borough: 1,
+            restaurant_id: 1,
+            grades: {
+                $map: {
+                    input: "$full_details.grades",
+                    as: "grade",
+                    in: "$$grade.grade"
+                }
+            }
+        }
+    }
+])
+
+db.restaurants.find({ name: { $regex: /^Wil/, $options: 'i' } })
+
+db.restaurants.find({
+    borough: "Bronx",
+    $or: [
+        { cuisine: { $regex: /^American\s*$/ } },
+        { cuisine: "Chinese" }
+    ]
+}
+)
+
+db.restaurants.find({
+    $or: [
+        { borough: "Staten Island" },
+        { borough: "Queens" },
+        { borough: "Bronx" },
+        { borough: "Brooklyn" },
+    ]
+}, { _id: 0, name: 1, borough: 1 })
+
+db.restaurants.find({
+    $nor: [
+        { cuisine: { $regex: /^American\s*$/ } },
+        { cuisine: "Chinese" }
+    ]
+}, { _id: 0, name: 1, borough: 1, cuisine: 1 })
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    {
+        $match: {
+            "grades.date": new ISODate("2014-08-11T00:00:00Z"),
+            "grades.grade": "A",
+            "grades.score": 11
+        }
+    },
+    {
+        $group: {
+            _id: "$_id",
+            name: { $first: "$name" },
+            cuisine: { $first: "$cuisine" },
+            borough: { $first: "$borough" },
+            restaurant_id: { $first: "$restaurant_id" },
+            grades: { $push: "$grades" }
+        }
+    }
+])
+
+db.restaurants.find({}, { _id: 0, name: 1 }).sort({ name: 1 }).toArray()
+
+db.restaurants.find({ address: { $exists: true, $ne: null, $ne: "" } })
+
+db.restaurants.find({
+    $and: [
+        { address: { $exists: true } },
+        { address: { $ne: null } },
+        { address: { $ne: "" } }
+    ]
+}, { address: 1, _id: 0 })
+
+db.restaurants.find({
+    $or: [
+        { address: { $exists: false } },
+        { address: null },
+        { address: "" },
+        { address: {} }
+    ]
+})
+
+db.restaurants.aggregate([
+    { $unwind: "$grades" },
+    {
+        $group: {
+            _id: "$_id",
+            name: { $first: "$name" },
+            borough: { $first: "$borough" },
+            cuisine: { $first: "$cuisine" },
+            restaurant_id: { $first: "$restaurant_id" },
+            score_avg: { $avg: "$grades.score" }
+        }
+    },
+    { $sort: { score_avg: -1 } },
+    { $limit: 10 }
+])
