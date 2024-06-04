@@ -45,9 +45,91 @@ const createBook = async (req, res) => {
 }
 
 // READ
+const getAllBooks = async (req, res) => {
+  try {
+    const books = await Book
+      .find({ isActive: true })
+      .populate('authors')
+    if (!books) {
+      return res.status(404).json({ error: 'No books found' })
+    }
+    res.status(200).json(books)
+  } catch (err) {
+    res.status(400).json({ error: err.message })
+  }
+}
+
+const getBookById = async (req, res) => {
+  if (!req.params.bookId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid book ID' })
+  }
+
+  try {
+    const book = await Book
+      .findById({ _id: req.params.bookId })
+      .populate('authors')
+    if (!book || book.isActive === false) {
+      return res.status(404).json({ error: 'Book not found' })
+    }
+    res.status(200).json(book)
+  } catch (err) {
+    res.status(400).json({ error: err.message })
+  }
+}
 
 // UPDATE
+const updateBookById = async (req, res) => {
+  if (!req.params.bookId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid book ID' })
+  }
+
+  try {
+    const book = await Book
+      .findByIdAndUpdate(req.params.bookId, req.body, { new: true }
+      )
+      .populate('authors')
+    if (!book) {
+      return res.status(404).json({ error: "Can't update Book, book ID not found" })
+    }
+    res.status(200).json(book)
+  } catch (err) {
+    res.status(400).json({ error: err.message })
+  }
+}
 
 // DELETE
+const deleteBookById = async (req, res) => {
+  if (!req.params.bookId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid book ID' })
+  }
 
-export { createBook }
+  if (req.query.destroy === 'true') {
+    try {
+      const book = await Book.findByIdAndDelete(req.params.bookId)
+      if (!book) {
+        return res.status(404).json({ error: "Can't delete Book, book ID not found" })
+      }
+      return res.status(204).end()
+    } catch (err) {
+      return res.status(400).json({ error: err.message })
+    }
+  }
+
+  try {
+    const book = await Book.findByIdAndUpdate(req.params.bookId, { isActive: false }, { new: false })
+    if (!book || book.isActive === false) {
+      return res.status(404).json({ error: "Can't delete Book, book ID not found" })
+    }
+    res.status(204).end()
+  } catch (err) {
+    res.status(400).json({ error: err.message })
+  }
+}
+
+export {
+  createBook,
+  getAllBooks,
+  getBookById,
+  updateBookById,
+  deleteBookById
+}
