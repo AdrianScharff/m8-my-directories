@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const movieSchema = mongoose.Schema({
+const movieSchema = new mongoose.Schema({
   name: { type: String, required: true },
   director: { type: String, required: true },
   releaseDate: { type: Date },

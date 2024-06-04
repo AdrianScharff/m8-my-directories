@@ -27,7 +27,73 @@ const getAllMovies = async (req, res) => {
   }
 }
 
+const getOneMovie = async (req, res) => {
+  const movieId = req.params.movieId
+  if (!movieId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid movie ID' })
+  }
+
+  try {
+    const movie = await Movie.findOne({ _id: movieId, isActive: true })
+    if (!movie) {
+      return res.status(404).json({ error: 'Movie not found' })
+    }
+    res.status(200).json(movie)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+const updateMovie = async (req, res) => {
+  const movieId = req.params.movieId
+  if (!movieId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid movie ID' })
+  }
+
+  try {
+    const movie = await Movie.findByIdAndUpdate(movieId, req.body, { new: true })
+    if (!movie) {
+      return res.status(404).json({ error: "Can't update: Movie not found" })
+    }
+    res.status(200).json(movie)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+const deleteMovie = async (req, res) => {
+  const movieId = req.params.movieId
+  if (!movieId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ error: 'Invalid movie ID' })
+  }
+
+  if (req.query.destroy === 'true') {
+    try {
+      const movie = await Movie.findByIdAndDelete(movieId)
+      if (!movie) {
+        return res.status(404).json({ error: "Can't delete movie: Movie not found" })
+      }
+      return res.status(204).end()
+    } catch (error) {
+      return res.status(400).json({ error: error.message })
+    }
+  }
+
+  try {
+    const movie = await Movie.findByIdAndUpdate(movieId, { isActive: false }, { new: false })
+    if (!movie || movie.isActive === false) {
+      return res.status(404).json({ error: "Can't delete movie: Movie not found" })
+    }
+    res.status(204).end()
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
 export {
   createMovie,
-  getAllMovies
+  getAllMovies,
+  getOneMovie,
+  updateMovie,
+  deleteMovie
 }
