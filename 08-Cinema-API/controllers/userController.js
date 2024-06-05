@@ -16,9 +16,17 @@ const createUser = async (req, res) => {
 }
 
 const getAllUsers = async (req, res) => {
+  const { name } = req.query
+  const filter = { isActive: true }
+
+  if (name) {
+    const nameWithSpaces = name.replace(/-/g, ' ')
+    filter.name = { $regex: nameWithSpaces, $options: 'i' }
+  }
+
   try {
-    const users = await User.find({ isActive: true })
-    if (!users) {
+    const users = await User.find(filter)
+    if (users.length === 0) {
       return res.status(404).json({ error: 'No users found' })
     }
     res.status(200).json(users)
