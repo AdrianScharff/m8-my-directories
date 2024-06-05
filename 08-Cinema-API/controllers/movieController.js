@@ -17,8 +17,26 @@ const createMovie = async (req, res) => {
 
 const getAllMovies = async (req, res) => {
   try {
-    const movies = await Movie.find({ isActive: true })
-    if (!movies) {
+    const { name, releaseDate, rate, genre } = req.query
+    const filter = { isActive: true }
+
+    if (name) {
+      const nameWitSpaces = name.replace(/-/g, ' ')
+      filter.name = { $regex: nameWitSpaces, $options: 'i' }
+    }
+    if (releaseDate) {
+      filter.releaseDate = releaseDate
+    }
+    if (rate) {
+      filter.rate = rate
+    }
+    if (genre) {
+      const genreWithSpaces = genre.replace(/-/g, ' ')
+      filter.genre = { $regex: genreWithSpaces, $options: 'i' }
+    }
+
+    const movies = await Movie.find(filter)
+    if (movies.length === 0) {
       return res.status(404).json({ error: 'No movies found' })
     }
     res.status(200).json(movies)
