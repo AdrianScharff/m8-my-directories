@@ -7,7 +7,7 @@ const isAuth = (req, res, next) => {
     return res.status(400).json({ message: 'Authorization header is missing' })
   }
 
-  const { bearer, token } = authHeader.split(' ')
+  const [bearer, token] = authHeader.split(' ')
 
   if (bearer !== 'Bearer') {
     return res.status(400).json({ message: 'Authorization header format is Bearer {token}' })
