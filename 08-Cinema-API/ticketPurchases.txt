@@ -1,0 +1,80 @@
+[
+	{
+		"movie": "",
+		"quantity": 3,
+		"ticketValue": 5,
+		"time": "2024-06-06T02:00:00.000Z",
+		"theater": 7,
+		"seats": "C4, C5"
+	}
+
+
+
+
+
+
+
+
+
+
+	{
+		"_id": "665f730fa4d923defcabdcdc",
+		"customer": {
+			"_id": "665e2cd6aa410337d63b1f1b",
+			"name": "Brad David"
+		},
+		"movie": {
+			"_id": "665f172b3f7b524411b67cac"
+		},
+		"quantity": 4,
+		"ticketValue": 4,
+		"time": "2024-06-07T00:30:00.000Z",
+		"theater": 5,
+		"seats": "B6, B7",
+		"isActive": true,
+		"totalValue": 16,
+		"createdAt": "2024-06-04T20:03:27.628Z",
+		"updatedAt": "2024-06-04T20:03:27.628Z",
+		"__v": 0
+	},
+	{
+		"_id": "665f79cd9fb0afdd8573d855",
+		"customer": {
+			"_id": "665dedcbf6c0881ed148c7e1",
+			"name": "Mike Paul"
+		},
+		"movie": {
+			"_id": "665f33cdc9d56d55a532796f"
+		},
+		"quantity": 23,
+		"ticketValue": 23,
+		"time": "2024-06-09T22:44:00.000Z",
+		"theater": 14,
+		"seats": "F18, F19",
+		"isActive": true,
+		"totalValue": 529,
+		"createdAt": "2024-06-04T20:32:13.462Z",
+		"updatedAt": "2024-06-05T16:43:08.744Z",
+		"__v": 0
+	},
+	{
+		"_id": "6660a1ef0555f8f25da0cb31",
+		"customer": {
+			"_id": "66609cc90555f8f25da0cb21",
+			"name": "Lamar Byne"
+		},
+		"movie": {
+			"_id": "66609eef0555f8f25da0cb26"
+		},
+		"quantity": 1,
+		"ticketValue": 5,
+		"time": "2024-06-12T01:00:00.000Z",
+		"theater": 2,
+		"seats": "G12",
+		"isActive": true,
+		"totalValue": 5,
+		"createdAt": "2024-06-05T17:35:43.362Z",
+		"updatedAt": "2024-06-05T17:35:43.362Z",
+		"__v": 0
+	}
+]

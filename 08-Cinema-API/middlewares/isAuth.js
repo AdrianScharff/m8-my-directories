@@ -23,15 +23,16 @@ const isAuth = (req, res, next) => {
     const now = Math.floor(Date.now() / 1000)
 
     if (payload.exp < now) {
-      return res.status(401).json({ message: 'Token Expired' }) // 401 unauthorized
+      return res.status(401).json({ message: 'Token Expired' }) // 401 Unauthorized
     }
 
+    req.userId = payload.sub
     req.role = payload.role
 
     next()
   } catch (error) {
-    return res.status(403).json({
-      message: `Token error: ${error.message}` // 403 forbidden
+    return res.status(403).json({ // 403 Forbidden
+      message: `Token error: ${error.message}`
     })
   }
 }

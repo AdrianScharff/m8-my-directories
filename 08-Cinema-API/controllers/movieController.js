@@ -17,12 +17,12 @@ const createMovie = async (req, res) => {
 
 const getAllMovies = async (req, res) => {
   try {
-    const { name, releaseDate, rate, genre } = req.query
+    const { title, releaseDate, rate, genre } = req.query
     const filter = { isActive: true }
 
-    if (name) {
-      const nameWitSpaces = name.replace(/-/g, ' ')
-      filter.name = { $regex: nameWitSpaces, $options: 'i' }
+    if (title) {
+      const titleWitSpaces = title.replace(/-/g, ' ')
+      filter.title = { $regex: titleWitSpaces, $options: 'i' }
     }
     if (releaseDate) {
       filter.releaseDate = releaseDate

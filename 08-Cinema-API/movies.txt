@@ -1,0 +1,76 @@
+[
+	{
+		"title": "Daugther of the mind",
+		"director": "Walter Grauman",
+		"releaseDate": "1969-12-09T00:00:00.000Z",
+		"rate": 70,
+		"duration": "90 minutes",
+		"genre": "Horror"
+	},
+	{
+		"title": "Denial",
+		"director": "Mick Jackson",
+		"releaseDate": "2017-01-27T00:00:00.000Z",
+		"rate": 86,
+		"duration": "109 minutes",
+		"genre": "Historical drama"
+	},
+	{
+		"title": "The Shadow in My Eye",
+		"director": "Ole Bornedal",
+		"releaseDate": "2021-10-28T00:00:00.000Z",
+		"rate": 94,
+		"duration": "107 minutes",
+		"genre": "War drama"
+	},
+	{
+		"title": "The Man from Earth",
+		"director": "Richard Schenkman",
+		"releaseDate": "2008-08-27T00:00:00.000Z",
+		"rate": 94,
+		"duration": "87 minutes",
+		"genre": "Science fiction, Drama"
+	},
+	{
+		title: "The Post",
+		director: "Steven Spielberg",
+		releaseDate: "2017-12-22T00:00:00.000+00:00",
+		rate: 86,
+		duration: "116 minutes",
+		genre: "Political thriller
+	},
+	{
+		"title": "All Quiet on the Western Front",
+		"director": "Edward Berger",
+		"releaseDate": "2022-09-29T00:00:00.000Z",
+		"rate": 92,
+		"duration": "147 minutes",
+		"genre": "Drama"
+	}
+]
+
+For Insomnia requests in the body:
+ticketPurchase: 6 fields
+    "movie": "6662436983030b8ce2d84f8f",	
+	  "quantity": 5,
+		"ticketValue": 2,
+		"time": "2024-07-06T02:00:00.000Z",
+		"theater": 11,
+		"seats": "H4, H5",
+movie: 6 fields
+    "title": "All Quiet on the Western Front",
+    "director": "Edward Berger",
+    "releaseDate": "2022-09-29T00:00:00.000Z",
+    "rate": 92,
+    "duration": "147 minutes",
+    "genre": "Drama"
+register: 9 fields
+    "name": "Lamar Byne",
+		"lastName": "Milton Peck",
+	  "email": "lamby2@cinema.com",
+		"password": "milton34",
+		"role": "CUSTOMER",
+	  "userName": "lamar2b23",
+		"DNI": 4750216,
+		"birthDate": "1998-12-01T00:00:00.000Z",
+		"phoneNumber": 8449801246

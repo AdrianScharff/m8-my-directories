@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const movieSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  title: { type: String, required: true },
   director: { type: String, required: true },
   releaseDate: { type: Date },
   rate: { type: Number },

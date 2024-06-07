@@ -1,0 +1,104 @@
+[
+	{
+		"name": "Mike Paul",
+		"lastName": "Towers Grace",
+		"email": "mikepaul@cinema.com",
+		"password": "paul1029",
+		"role": "CUSTOMER",
+		"userName": "mike09",
+		"DNI": 2314564,
+		"birthDate": "1999-10-18T00:00:00.000Z",
+		"phoneNumber": 8441234309
+	},
+	{
+		"name": "John Michael",
+		"lastName": "Ferdinand Da Silva",
+		"email": "johnterry@cinema.com",
+		"password": "Mich45tr",
+		"role": "CUSTOMER",
+		"userName": "terry78",
+		"DNI": 6890234,
+		"birthDate": "1978-04-23T00:00:00.000Z",
+		"phoneNumber": 8445340987
+	},
+	{
+		"name": "Brad David",
+		"lastName": "Larson Carter",
+		"email": "braddav@cinema.com",
+		"password": "david491",
+		"role": "EMPLOYEE",
+		"userName": "brad91",
+		"DNI": 6575839,
+		"birthDate": "1991-07-01T00:00:00.000Z",
+		"phoneNumber": 8445769267		
+	},
+  {
+    "name": "Virgil Dwayne",
+    "lastName": "Ogy Blue",
+		"email": "virgild@cinema.com",
+    "password": "dwayne84",
+    "role": "EMPLOYEE",
+    "userName": "virgil72",
+    "DNI": 1480268,
+    "birthDate": "1967-05-29T00:00:00.000+00:00",
+    "phoneNumber": 8445901234
+  },
+	{
+		"name": "Rio Kevin",
+		"lastName": "Prince Ballack",
+		"email": "Riokv@cinema.com",
+		"password": "ballack74",
+		"role": "CUSTOMER",
+		"userName": "kevinpr29",
+		"DNI": 9572945,
+		"birthDate": "1976-02-29T00:00:00.000Z",
+		"phoneNumber": 8445159838		
+	},
+	{
+		"name": "Lamar Byne",
+		"lastName": "Milton Peck",
+		"email": "lamby@cinema.com",
+		"password": "milton34",
+		"role": "CUSTOMER",
+		"userName": "lamarb21",
+		"DNI": 4750218,
+		"birthDate": "1998-12-01T00:00:00.000Z",
+		"phoneNumber": 8449801246
+	},
+	{
+		"name": "Greg Nimmt",
+		"lastName": "Simons Quirck",
+		"email": "gregn@cinema.com",
+		"password": "simons64",
+		"role": "ADMIN",
+		"userName": "gregni93",
+		"DNI": 6739841,
+		"birthDate": "1988-04-15T00:00:00.000Z",
+		"phoneNumber": 8449925475
+	},
+	{
+		"name": "Jack Nelson",
+		"lastName": "Turner Dim",
+		"email": "Jackn@cinema.com",
+		"password": "turner10",
+		"role": "EMPLOYEE",
+		"userName": "jackn56",
+		"DNI": 5748392,
+		"birthDate": "1993-05-04T00:00:00.000Z",
+		"phoneNumber": 8446340987
+	}
+]
+
+
+
+
+PASSWORDS:
+Jack Nelson: turner10
+Greg Nimmt: simons64
+Lamar Byne: milton34
+
+
+TOKENS
+ADMIN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NjYxZmVhODNkYjQyOGVmNDFlYjUwYmIiLCJlbWFpbCI6ImdyZWduQGNpbmVtYS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MTc3MTQ5ODQsImV4cCI6MTcxODMxOTc4NH0.fqV-KMuPjB29ZxUoXhVPE7uaUnOFFPNAHtFcNyn1864
+EMPLOYEE: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NjYxZmQxOTNkYjQyOGVmNDFlYjUwYjUiLCJlbWFpbCI6IkphY2tuQGNpbmVtYS5jb20iLCJyb2xlIjoiRU1QTE9ZRUUiLCJpYXQiOjE3MTc3MTQ5MzEsImV4cCI6MTcxODMxOTczMX0.atcPexRly0Y3t8M-n-OMnIhEfbvvdKsOncH-6AAzgeI
+CUSTOMER: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NjYyMDU2YjQ4N2M2YTM4OGZjNmVkZWMiLCJlbWFpbCI6ImxhbWJ5QGNpbmVtYS5jb20iLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3MTc3MTQ4MzYsImV4cCI6MTcxODMxOTYzNn0.FHGOMCFq7ADdxzvtE9qoJMxMWqLfOuSoVV_PYYdT7bw
